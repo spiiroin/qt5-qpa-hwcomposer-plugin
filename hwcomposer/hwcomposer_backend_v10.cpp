@@ -275,7 +275,7 @@ HwComposerBackend_v10::refreshRate()
         int res = hwc_device->query(hwc_device, HWC_VSYNC_PERIOD, &vsyncVal);
         if (res != 0 || vsyncVal == 0) {
             qWarning() << "query(HWC_VSYNC_PERIOD) failed, assuming 60 Hz";
-            vsyncVal = 60.0;
+            vsyncVal = 16666667; // 60 Hz vsync period in ns
         }
 
         vsyncFPS = (float)1000000000 / (float)vsyncVal;
